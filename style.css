@@ -39,9 +39,9 @@ body {
 
 .buttons {
     display: flex;
-    gap: 1.2rem;
     align-items: center;
     justify-content: center;
+    gap: 2.5rem;
     margin-top: 0.8rem;
 }
 
@@ -151,7 +151,7 @@ button:hover {
 
 /* GIF styling (NO FIXED POSITION ANYMORE) */
 .gif-container {
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
 }
 
@@ -161,4 +161,5 @@ button:hover {
     height: auto;
     display: block;
     margin: 0 auto;
+    transform-origin: top center;
 }
