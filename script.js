@@ -5,6 +5,7 @@ const buttons = document.querySelector('.buttons');
 const text = document.querySelector('.text');
 
 let yesSize = 16;
+let noSize = 16;
 
 // YES BUTTON
 function yes() {
@@ -34,20 +35,31 @@ function no() {
 
     noClickCount++;
 
-    // shrink "No" button
-    const noScale = Math.max(0.3, 1 - noClickCount * 0.12);
-    noBtn.style.transform = `scale(${noScale})`;
+    // shrink "No" button by font size / padding (no overlap)
+    noSize = Math.max(10, 16 - noClickCount * 2);
+    noBtn.style.fontSize = noSize + 'px';
+    noBtn.style.padding = `${noSize / 4}px ${noSize / 2}px`;
 
-    // grow "Yes" button
-    const yesScale = 1 + noClickCount * 0.18;
-    yesBtn.style.transform = `scale(${yesScale})`;
+    // grow "Yes" button by font size / padding
+    yesSize = 16 + noClickCount * 4;
+    yesBtn.style.fontSize = yesSize + 'px';
+    yesBtn.style.padding = `${yesSize / 3}px ${yesSize / 2}px`;
 
     if (noClickCount >= maxNoClicksBeforeDisappear) {
         noBtn.remove();
         createHeartAnimation();
     }
 
-    showGif("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWNsMHE1YzFjNWxvbjVvZ3M0NWs4ODJ5enljdmEzNGU0d2RkeTl1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WK7omsLop0431tZjXb/giphy.gif");
+    // Show your XELA.jpg image (in the same folder) when she presses "No"
+    showGif("XELA.jpg");
+
+    // Make the picture grow a bit more with every No click
+    const img = document.querySelector('.gif-container .anime-gif');
+    if (img) {
+        const imgScale = 1 + noClickCount * 0.15; // slightly bigger each time
+        img.style.transition = 'transform 0.2s ease';
+        img.style.transform = `scale(${Math.min(imgScale, 1.6)})`; // cap so it doesn't explode
+    }
 }
 
 // HEARTS
