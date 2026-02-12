@@ -14,7 +14,7 @@ function yes() {
     question.innerHTML = [
         'See you on Saturday! 💕',
         'What: Valentines Date',
-        'When: February 14, 2026',
+        'When: February 14, 2026 | 12:00 PM',
         'Where: The Frazzled Cook Makati (LPL Mansions, 122 LP Leviste Street, Salcedo, Makati)',
         'What to wear: Anything Comfortable',
         'See you honeybunch!'
